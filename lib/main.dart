@@ -1,4 +1,5 @@
-import 'package:e_commerce/core/themes/app_themes.dart';
+import 'package:e_commerce/core/global/themes/dark/dark_theme.dart';
+import 'package:e_commerce/core/global/themes/light/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,16 +18,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(360, 690),
+      designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp.router(
-          theme: AppThemes.lightTheme,
-          darkTheme: AppThemes.darkTheme,
-          themeMode: ThemeMode.system,
-          debugShowCheckedModeBanner: false,
-          routerConfig: AppRouter.router,
+        return GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: MaterialApp.router(
+            theme: getLightTheme(context),
+            darkTheme: getDarkTheme(context),
+            themeMode: ThemeMode.system,
+            debugShowCheckedModeBanner: false,
+            routerConfig: AppRouter.router,
+          ),
         );
       },
     );
