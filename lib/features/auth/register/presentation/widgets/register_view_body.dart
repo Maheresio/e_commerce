@@ -52,8 +52,9 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                       nameController: _nameController,
                       emailController: _emailController,
                       passwordController: _passwordController,
+                      onPressed: () {},
                     ),
-                  
+
                     SocialSection(),
                   ],
                 ),

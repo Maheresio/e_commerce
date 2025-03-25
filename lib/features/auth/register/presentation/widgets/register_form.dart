@@ -1,24 +1,24 @@
+import 'package:e_commerce/features/auth/register/presentation/widgets/register_input_section.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../../core/utils/app_images.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/utils/app_styles.dart';
-import 'social_section.dart';
-import 'styled_social_button.dart';
-import 'styled_text_form_field.dart';
+import 'navigation_button.dart';
+import 'submit_button.dart';
 
 class RegisterForm extends StatelessWidget {
   const RegisterForm({
     super.key,
-    required TextEditingController nameController,
-    required TextEditingController emailController,
-    required TextEditingController passwordController,
-  }) : _nameController = nameController, _emailController = emailController, _passwordController = passwordController;
+    required this.nameController,
+    required this.emailController,
+    required this.passwordController,
+    this.onPressed,
+  });
 
-  final TextEditingController _nameController;
-  final TextEditingController _emailController;
-  final TextEditingController _passwordController;
+  final TextEditingController nameController;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -27,59 +27,23 @@ class RegisterForm extends StatelessWidget {
       children: [
         Text(AppStrings.kSignUp, style: AppStyles.text34Bold),
         SizedBox(height: 70),
-        Column(
-          spacing: 4,
-          children: [
-            StyledTextFormField(
-              text: AppStrings.kName,
-              controller: _nameController,
-    
-              keyboardType: TextInputType.name,
-            ),
-            StyledTextFormField(
-              controller: _emailController,
-              text: AppStrings.kEmail,
-    
-              keyboardType: TextInputType.emailAddress,
-            ),
-            StyledTextFormField(
-              controller: _passwordController,
-              text: AppStrings.kPassword,
-    
-              keyboardType: TextInputType.visiblePassword,
-              textInputAction: TextInputAction.done,
-            ),
-          ],
+        RegisterInputSection(
+          nameController: nameController,
+          emailController: emailController,
+          passwordController: passwordController,
         ),
-    
+
         Align(
           alignment: AlignmentDirectional.centerEnd,
-          child: Row(
-            spacing: 4,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              TextButton(
-                onPressed: () {},
-                child: Text(AppStrings.kAlreadyHaveAccount),
-              ),
-              SvgPicture.asset(AppImages.arrowRight),
-            ],
+          child: NavigationButton(
+            text: AppStrings.kAlreadyHaveAccount,
+            onPressed: () {},
           ),
         ),
         SizedBox(height: 20),
-    
-        SizedBox(
-          width: double.infinity,
-          height: 48,
-          child: ElevatedButton(
-            onPressed: () {},
-            child: Text(AppStrings.kSignUp),
-          ),
-        ),
-    
-     
+
+        SubmitButton(text: AppStrings.kSignUp, onPressed: onPressed),
       ],
     );
   }
 }
-
