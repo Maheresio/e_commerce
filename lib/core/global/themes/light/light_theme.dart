@@ -1,5 +1,5 @@
-import 'package:e_commerce/core/global/themes/light/app_colors_light.dart';
-import 'package:e_commerce/core/utils/app_styles.dart';
+import 'app_colors_light.dart';
+import '../../../utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 ThemeData getLightTheme(BuildContext context) => ThemeData(

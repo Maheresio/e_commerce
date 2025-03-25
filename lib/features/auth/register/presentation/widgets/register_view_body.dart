@@ -1,8 +1,8 @@
-import 'package:e_commerce/features/auth/register/presentation/widgets/social_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'register_form.dart';
+import 'social_section.dart';
 
 class RegisterViewBody extends StatefulWidget {
   const RegisterViewBody({super.key});

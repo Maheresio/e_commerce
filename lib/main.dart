@@ -1,5 +1,5 @@
-import 'package:e_commerce/core/global/themes/dark/dark_theme.dart';
-import 'package:e_commerce/core/global/themes/light/light_theme.dart';
+import 'core/global/themes/dark/dark_theme.dart';
+import 'core/global/themes/light/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

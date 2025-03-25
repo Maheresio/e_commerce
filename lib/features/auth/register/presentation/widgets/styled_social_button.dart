@@ -1,4 +1,4 @@
-import 'package:e_commerce/core/extensions/theme_color.extension.dart';
+import '../../../../../core/extensions/theme_color.extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';

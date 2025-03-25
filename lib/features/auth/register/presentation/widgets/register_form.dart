@@ -1,9 +1,9 @@
-import 'package:e_commerce/features/auth/register/presentation/widgets/register_input_section.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/utils/app_styles.dart';
 import 'navigation_button.dart';
+import 'register_input_section.dart';
 import 'submit_button.dart';
 
 class RegisterForm extends StatelessWidget {
