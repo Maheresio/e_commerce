@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/app_images.dart';
-import '../../../../../core/utils/app_strings.dart';
-import '../../../../../core/utils/app_styles.dart';
+import '../../../../core/utils/app_images.dart';
+import '../../../../core/utils/app_strings.dart';
+import '../../../../core/utils/app_styles.dart';
 import 'styled_social_button.dart';
 
 class SocialSection extends StatelessWidget {

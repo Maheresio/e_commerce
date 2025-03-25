@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/app_strings.dart';
-
 class NavigationButton extends StatelessWidget {
   const NavigationButton({super.key, this.onPressed, required this.text});
 
