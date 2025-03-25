@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_strings.dart';
-import 'styled_text_form_field.dart';
+import '../../../shared/widgets/styled_text_form_field.dart';
 
 class RegisterInputSection extends StatelessWidget {
   const RegisterInputSection({
