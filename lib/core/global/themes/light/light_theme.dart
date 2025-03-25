@@ -1,6 +1,7 @@
-import 'app_colors_light.dart';
-import '../../../utils/app_styles.dart';
 import 'package:flutter/material.dart';
+
+import '../../../utils/app_styles.dart';
+import 'app_colors_light.dart';
 
 ThemeData getLightTheme(BuildContext context) => ThemeData(
   scaffoldBackgroundColor: AppColorsLight.kBackgroundColor,
