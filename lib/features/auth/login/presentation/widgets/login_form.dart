@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/app_strings.dart';
+import '../../../shared/widgets/header_section.dart';
 import '../../../shared/widgets/navigation_button.dart';
 import '../../../shared/widgets/submit_button.dart';
-import '../../../shared/widgets/header_section.dart';
 import 'login_input_section.dart';
 
 class LoginForm extends StatelessWidget {
@@ -42,7 +44,9 @@ class LoginForm extends StatelessWidget {
           alignment: AlignmentDirectional.centerEnd,
           child: NavigationButton(
             text: AppStrings.kDontHaveAccount,
-            onPressed: () {},
+            onPressed: () {
+              GoRouter.of(context).push(AppRouter.kRegister);
+            },
           ),
         ),
       ],

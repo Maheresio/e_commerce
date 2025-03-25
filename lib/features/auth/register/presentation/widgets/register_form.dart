@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../shared/widgets/navigation_button.dart';
@@ -37,7 +39,9 @@ class RegisterForm extends StatelessWidget {
           alignment: AlignmentDirectional.centerEnd,
           child: NavigationButton(
             text: AppStrings.kAlreadyHaveAccount,
-            onPressed: () {},
+            onPressed: () {
+              GoRouter.of(context).push(AppRouter.kLogin);
+            },
           ),
         ),
         SizedBox(height: 20),
