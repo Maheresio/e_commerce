@@ -48,11 +48,14 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    RegisterForm(
-                      nameController: _nameController,
-                      emailController: _emailController,
-                      passwordController: _passwordController,
-                      onPressed: () {},
+                    Padding(
+                      padding: const EdgeInsets.only(top:50),
+                      child: RegisterForm(
+                        nameController: _nameController,
+                        emailController: _emailController,
+                        passwordController: _passwordController,
+                        onPressed: () {},
+                      ),
                     ),
 
                     SocialSection(),

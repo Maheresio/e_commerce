@@ -45,9 +45,12 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  LoginForm(
-                    emailController: emailController,
-                    passwordController: passwordController,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 50),
+                    child: LoginForm(
+                      emailController: emailController,
+                      passwordController: passwordController,
+                    ),
                   ),
                   SocialSection(),
                 ],
@@ -59,4 +62,3 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     );
   }
 }
-
