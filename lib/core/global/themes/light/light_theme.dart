@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../utils/app_styles.dart';
 import 'app_colors_light.dart';
 
-ThemeData getLightTheme(BuildContext context) => ThemeData(
+ThemeData get lightTheme => ThemeData(
   scaffoldBackgroundColor: AppColorsLight.kBackgroundColor,
   colorScheme: ColorScheme.light(
     primary: AppColorsLight.kPrimary,

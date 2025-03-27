@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: MaterialApp.router(
-            theme: getLightTheme(context),
-            darkTheme: getDarkTheme(context),
+            theme: lightTheme,
+            darkTheme: darkTheme,
             themeMode: ThemeMode.system,
             debugShowCheckedModeBanner: false,
             routerConfig: AppRouter.router,
