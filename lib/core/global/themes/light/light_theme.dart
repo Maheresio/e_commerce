@@ -27,7 +27,7 @@ ThemeData get lightTheme => ThemeData(
 
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
-       padding: WidgetStateProperty.all(EdgeInsets.symmetric(horizontal: 0)),
+      padding: WidgetStateProperty.all(EdgeInsets.symmetric(horizontal: 0,vertical: 16)),
       textStyle: WidgetStateProperty.all(AppStyles.text14Medium),
       foregroundColor: WidgetStateProperty.resolveWith((states) {
         return states.contains(WidgetState.pressed)
