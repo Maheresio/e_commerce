@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/helpers/styled_snack_bar.dart';
 import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/utils/app_styles.dart';
-import '../../../shared/widgets/navigation_button.dart';
-import '../../../shared/widgets/submit_button.dart';
+import '../../../shared/presentation/widgets/navigation_button.dart';
+import '../../../shared/presentation/widgets/submit_button.dart';
+import '../bloc/register_bloc.dart';
 import 'register_input_section.dart';
 
 class RegisterForm extends StatelessWidget {
@@ -27,26 +30,58 @@ class RegisterForm extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // Title
         Text(AppStrings.kSignUp, style: AppStyles.text34Bold),
-        SizedBox(height: 70),
+        const SizedBox(height: 70),
+
+        // Input Section
         RegisterInputSection(
           nameController: nameController,
           emailController: emailController,
           passwordController: passwordController,
         ),
 
+        // Navigation Button
         Align(
           alignment: AlignmentDirectional.centerEnd,
           child: NavigationButton(
             text: AppStrings.kAlreadyHaveAccount,
-            onPressed: () {
-              GoRouter.of(context).push(AppRouter.kLogin);
-            },
+            onPressed: () => GoRouter.of(context).go(AppRouter.kLogin),
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
 
-        SubmitButton(text: AppStrings.kSignUp, onPressed: onPressed),
+        // Submit Button with BlocConsumer
+        BlocConsumer<RegisterBloc, RegisterState>(
+          listener: (context, state) {
+            if (state is RegisterSuccess) {
+              openStyledSnackBar(
+                context,
+                text: AppStrings.kSuccessRegister,
+                type: SnackBarType.success,
+              );
+              Future.delayed(Duration(seconds: 2), () {
+                if (!context.mounted) return;
+                GoRouter.of(context).go(AppRouter.kLogin);
+              });
+            } else if (state is RegisterFailure) {
+              openStyledSnackBar(
+                context,
+                text: state.message,
+                type: SnackBarType.error,
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state is RegisterLoading) {
+              return const SubmitButton(
+                isLoading: true,
+                text: AppStrings.kSignUp,
+              );
+            }
+            return SubmitButton(text: AppStrings.kSignUp, onPressed: onPressed);
+          },
+        ),
       ],
     );
   }

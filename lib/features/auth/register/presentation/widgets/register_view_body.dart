@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../shared/widgets/social_section.dart';
+import '../../../shared/presentation/widgets/social_section.dart';
+import '../bloc/register_bloc.dart';
 import 'register_form.dart';
 
 class RegisterViewBody extends StatefulWidget {
@@ -49,12 +51,22 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top:50),
+                      padding: const EdgeInsets.only(top: 50),
                       child: RegisterForm(
                         nameController: _nameController,
                         emailController: _emailController,
                         passwordController: _passwordController,
-                        onPressed: () {},
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            BlocProvider.of<RegisterBloc>(context).add(
+                              RegisterButtonPressed(
+                                email: _emailController.text,
+                                name: _nameController.text,
+                                password: _passwordController.text,
+                              ),
+                            );
+                          }
+                        },
                       ),
                     ),
 

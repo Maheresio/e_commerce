@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_strings.dart';
-import '../../../shared/widgets/styled_text_form_field.dart';
+import '../../../shared/domain/entity/email_validation.dart';
+import '../../../shared/domain/entity/name_validation.dart';
+import '../../../shared/domain/entity/password_validation.dart';
+import '../../../shared/presentation/widgets/styled_text_form_field.dart';
 
 class RegisterInputSection extends StatelessWidget {
   const RegisterInputSection({
@@ -23,19 +26,37 @@ class RegisterInputSection extends StatelessWidget {
         StyledTextFormField(
           text: AppStrings.kName,
           controller: nameController,
-    
+          validator: (value) {
+            final validation = NameValidation(value).value;
+            return validation.fold((failure) => failure.message, (_) => null);
+          },
+
           keyboardType: TextInputType.name,
         ),
         StyledTextFormField(
           controller: emailController,
           text: AppStrings.kEmail,
-    
+          validator: (value) {
+            final emailValidation = EmailValidation(value).value;
+            return emailValidation.fold(
+              (failure) => failure.message,
+              (_) => null,
+            );
+          },
           keyboardType: TextInputType.emailAddress,
         ),
         StyledTextFormField(
+          isPassword: true,
+
           controller: passwordController,
           text: AppStrings.kPassword,
-    
+          validator: (value) {
+            final passwordValidation = PasswordValidation(value).value;
+            return passwordValidation.fold(
+              (failure) => failure.message,
+              (_) => null,
+            );
+          },
           keyboardType: TextInputType.visiblePassword,
           textInputAction: TextInputAction.done,
         ),
