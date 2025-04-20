@@ -22,12 +22,23 @@ ThemeData get lightTheme => ThemeData(
     floatingLabelStyle: AppStyles.text14Medium.copyWith(
       color: AppColorsLight.kGrey,
     ),
-    border: OutlineInputBorder(borderSide: BorderSide.none),
+    border: UnderlineInputBorder(borderSide: BorderSide.none),
+    focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: AppColorsLight.kPrimary),
+    ),
+    errorBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: AppColorsLight.kErrorColor),
+    ),
+    focusedErrorBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: AppColorsLight.kErrorColor),
+    ),
   ),
 
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
-      padding: WidgetStateProperty.all(EdgeInsets.symmetric(horizontal: 0,vertical: 16)),
+      padding: WidgetStateProperty.all(
+        EdgeInsets.symmetric(horizontal: 0, vertical: 16),
+      ),
       textStyle: WidgetStateProperty.all(AppStyles.text14Medium),
       foregroundColor: WidgetStateProperty.resolveWith((states) {
         return states.contains(WidgetState.pressed)
@@ -39,14 +50,13 @@ ThemeData get lightTheme => ThemeData(
   ),
 
   elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ButtonStyle(
-      backgroundColor: WidgetStateProperty.all(AppColorsLight.kPrimary),
-      shape: WidgetStateProperty.all(
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-      ),
-      foregroundColor: WidgetStatePropertyAll(AppColorsLight.kwhite),
-      textStyle: WidgetStateProperty.all((AppStyles.text14Medium)),
-      overlayColor: WidgetStatePropertyAll(Colors.redAccent),
+    style: ElevatedButton.styleFrom(
+      animationDuration: const Duration(milliseconds: 200),
+      backgroundColor: AppColorsLight.kPrimary,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+      foregroundColor: AppColorsLight.kwhite,
+      textStyle: AppStyles.text14Medium,
+      overlayColor: Colors.redAccent,
     ),
   ),
 );
