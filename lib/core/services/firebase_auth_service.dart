@@ -8,6 +8,7 @@ abstract class FirebaseAuthService {
 
   Future<void> registerWithEmailAndPassword({
     required String email,
+    required String name,
     required String password,
   });
   Stream<User?> authStateChanges();

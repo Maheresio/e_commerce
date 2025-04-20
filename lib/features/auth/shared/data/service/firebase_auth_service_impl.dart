@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'package:e_commerce/core/services/firebase_auth_service.dart';
+import '../../../../../core/services/firebase_auth_service.dart';
 
 class FirebaseAuthServiceImpl implements FirebaseAuthService {
   final FirebaseAuth firebaseAuth;
@@ -20,17 +20,18 @@ class FirebaseAuthServiceImpl implements FirebaseAuthService {
   @override
   Future<void> registerWithEmailAndPassword({
     required String email,
+    required String name,
     required String password,
   }) async {
-    await firebaseAuth.createUserWithEmailAndPassword(
+    final userCredential = await firebaseAuth.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
+    await userCredential.user?.updateDisplayName(name);
   }
 
   @override
-  Stream<User?> authStateChanges() =>firebaseAuth.authStateChanges();
-  
+  Stream<User?> authStateChanges() => firebaseAuth.authStateChanges();
 
   @override
   User? get currentUser => firebaseAuth.currentUser;
