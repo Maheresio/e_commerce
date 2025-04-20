@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../shared/widgets/social_section.dart';
+import '../../../shared/presentation/widgets/social_section.dart';
+import '../bloc/login_bloc.dart';
 import 'login_form.dart';
 
 class LoginViewBody extends StatefulWidget {
@@ -50,6 +52,18 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     child: LoginForm(
                       emailController: emailController,
                       passwordController: passwordController,
+                      submit: () {
+                        if (_formKey.currentState!.validate()) {
+                          if (_formKey.currentState!.validate()) {
+                            BlocProvider.of<LoginBloc>(context).add(
+                              LoginButtonPressed(
+                                email: emailController.text,
+                                password: passwordController.text,
+                              ),
+                            );
+                          }
+                        }
+                      },
                     ),
                   ),
                   SocialSection(),
