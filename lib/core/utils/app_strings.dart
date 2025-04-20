@@ -45,7 +45,8 @@ class AppStrings {
   static const String kDeliveryMethod = "Delivery method";
   static const String kSubmitOrder = "SUBMIT ORDER";
   static const String kTotalAmount = "Total amount:";
-  static const String kSuccess = "Success!";
+  static const String kSuccessRegister = "Registration successful!";
+  static const String kSuccessLogin = "Login successful!";
   static const String kContinueShopping = "Continue shopping";
   static const String kMyBag = "My Bag";
   static const String kEnterPromoCode = "Enter your promo code";
