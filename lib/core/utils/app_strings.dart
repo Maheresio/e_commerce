@@ -32,6 +32,7 @@ class AppStrings {
   static const String kAll = "All";
   static const String kApply = "Apply";
   static const String kDiscard = "Discard";
+  static const String kColorInfo = 'Color Info';
   static const String kFilters = "Filters";
   static const String kSearch = "Search";
   static const String kRatingAndReviews = "Rating and reviews";
@@ -56,11 +57,14 @@ class AppStrings {
   static const String kEnterPromoCode = "Enter your promo code";
   static const String kAddToFavorites = "ADD TO FAVORITES";
   static const String kSelectSize = "Select size";
+  static const String kSelectColor = "Select color";
   static const String kSizeInfo = "Size info";
   static const String kAddCard = "ADD CARD";
   static const String kSaveAddress = "SAVE ADDRESS";
   static const String kEdit = "Edit";
   static const String kSale = "Sale";
+  static const String kNoSizesAvailable = "No sizes available";
+  static const String kNoColorsAvailable = "No colors available";
   static const String kUseAsShippingAddress = "Use as the shipping address";
   static const String kSuperSummerSale = "Super summer sale";
   static const String kDeleteFromList = "Delete from the list";
