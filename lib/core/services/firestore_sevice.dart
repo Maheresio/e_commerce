@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_commerce/core/constants/firestore_constants.dart';
 import 'package:flutter/foundation.dart';
 
 class FirestoreServices {
@@ -7,6 +8,10 @@ class FirestoreServices {
   static final instance = FirestoreServices._();
 
   final _fireStore = FirebaseFirestore.instance;
+
+  Future<String> getPath() async {
+    return (_fireStore.collection(FirestoreConstants.products).doc()).id;
+  }
 
   Future<void> setData({
     required String path,
