@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:uuid/uuid.dart';
 
 import 'core/constants/firestore_constants.dart';
 import 'core/global/themes/dark/dark_theme.dart';
@@ -37,9 +36,10 @@ void main() async {
 
   // for (var product in products) {
   //   debugPrint('product id: ${product.id}');
+  //   final id = await FirestoreServices.instance.getPath();
   //   await FirestoreServices.instance.setData(
-  //     path: FirestoreConstants.product(Uuid().v4()),
-  //     data: product.toMap(),
+  //     path: FirestoreConstants.product(id),
+  //     data: product.toMap(id),
   //   );
   // }
 
