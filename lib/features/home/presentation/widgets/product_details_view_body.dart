@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helpers/extensions/theme_color.extension.dart';
-import '../../../../core/helpers/methods/product_lists.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/product_info_tile.dart';
 import '../../domain/entities/product_entity.dart';
@@ -29,7 +28,7 @@ class ProductDetailsViewBody extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: Column(
               children: [
-                SizeColorFavoriteSelector(sizes: sizes, product: product),
+                SizeColorFavoriteSelector(product: product),
 
                 SizedBox(height: 22),
                 ProductDetailsInfo(product: product),

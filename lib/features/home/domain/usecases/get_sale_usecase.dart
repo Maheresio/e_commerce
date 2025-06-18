@@ -1,7 +1,6 @@
 import '../entities/product_entity.dart';
 import '../repositories/home_repository.dart';
 
-
 class GetSaleUsecase {
   final HomeRepository homeRepository;
 

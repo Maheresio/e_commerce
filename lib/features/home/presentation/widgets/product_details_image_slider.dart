@@ -8,32 +8,35 @@ class ProductDetailsImageSlider extends StatelessWidget {
   const ProductDetailsImageSlider({
     super.key,
     required this.product,
-    this.selectedColor = 'black',
+    this.selectedColor,
   });
 
   final ProductEntity product;
-  final String selectedColor;
+  final String? selectedColor;
 
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
       options: CarouselOptions(
-        enableInfiniteScroll: false,
         padEnds: false,
-        viewportFraction: .8,
+        viewportFraction: 1.0,
+        autoPlay: true,
+        autoPlayAnimationDuration: const Duration(milliseconds: 1000),
+        autoPlayCurve: Curves.linear,
+        pauseAutoPlayOnTouch: true,
         height: 413.h,
       ),
       items:
-          (product.imageUrls[selectedColor] ?? []).map((element) {
-            return Padding(
-              padding: EdgeInsetsDirectional.only(end: 8.w),
-              child: Image.network(
-                element,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
-            );
-          }).toList(),
+          (product.imageUrls[selectedColor ?? product.imageUrls.keys.first] ??
+                  [])
+              .map((element) {
+                return Image.network(
+                  element,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                );
+              })
+              .toList(),
     );
   }
 }

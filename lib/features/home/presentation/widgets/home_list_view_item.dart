@@ -24,11 +24,11 @@ class HomeListViewItem extends StatelessWidget {
         child: Stack(
           children: [
             ProductItem(product),
-            if (product.discountValue != null && product.discountValue != 0)
+            if (product.discountValue != 0)
               Positioned(
                 top: 8,
                 left: 8,
-                child: DiscountText(product.discountValue!),
+                child: DiscountText(product.discountValue),
               ),
             Positioned(
               right: 0,
@@ -68,7 +68,7 @@ class ProductItem extends StatelessWidget {
         SizedBox(height: 3),
         ProductPrice(
           price: product.price,
-          discountValue: product.discountValue ?? 0,
+          discountValue: product.discountValue,
         ),
       ],
     );
@@ -226,6 +226,7 @@ class HomeFavoriteWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
       onTap: () {
+        debugPrint('Favorite tapped for product ID: $id');
         ref.read(
           updateProductProvider(
             UpdateParams(id: id, data: {'isFavorite': !isFavorite}),

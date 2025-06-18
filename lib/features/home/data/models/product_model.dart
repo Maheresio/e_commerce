@@ -60,9 +60,9 @@ class ProductModel extends ProductEntity {
     );
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toMap(String idd) {
     return {
-      'id': id,
+      'id': idd,
       'name': name,
       'category': category,
       'tags': tags,
