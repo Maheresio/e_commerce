@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/core/services/firestore_sevice.dart';
 import '../../../../core/network/dio_client.dart';
 import '../../../../core/services/supabase_storage_service.dart';

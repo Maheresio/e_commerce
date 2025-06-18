@@ -1,6 +1,5 @@
 import 'dart:typed_data';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/core/services/firestore_sevice.dart';
 
 import '../../../../core/constants/api_constants.dart';
@@ -58,7 +57,7 @@ class SearchRemoteDataSourceImpl implements SearchRemoteDataSource {
 
           // Extract tag names
           return concepts
-              .where((concept) => concept['value'] > 0.5)
+              .where((concept) => concept['value'] >= 0.8)
               .map<String>((concept) => concept['name'].toString())
               .toList();
         }

@@ -32,6 +32,7 @@ class _CropImageViewState extends ConsumerState<CropImageView> {
 
   Uint8List? _croppedImageBytes;
   bool _isCropped = false;
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +56,11 @@ class _CropImageViewState extends ConsumerState<CropImageView> {
                 alwaysShowThirdLines: false,
                 onCrop: (rect) => debugPrint('Crop changed: $rect'),
               ),
+
+          if (isLoading) ...[
+            const ModalBarrier(dismissible: false, color: Colors.black45),
+            const Center(child: CircularProgressIndicator()),
+          ],
         ],
       ),
       bottomNavigationBar: Container(
@@ -83,7 +89,9 @@ class _CropImageViewState extends ConsumerState<CropImageView> {
 
   Future<void> _onCropPressed() async {
     if (_isCropped) return;
-
+    setState(() {
+      isLoading = true;
+    });
     try {
       final ui.Image bitmap = await controller.croppedBitmap();
       final ByteData? byteData = await bitmap.toByteData(
@@ -95,11 +103,16 @@ class _CropImageViewState extends ConsumerState<CropImageView> {
       }
 
       setState(() {
+        isLoading = false;
         _croppedImageBytes = byteData.buffer.asUint8List();
         _isCropped = true;
       });
     } catch (e) {
       if (!mounted) return;
+
+      setState(() {
+        isLoading = false;
+      });
 
       ScaffoldMessenger.of(
         context,
@@ -107,8 +120,8 @@ class _CropImageViewState extends ConsumerState<CropImageView> {
     }
   }
 
-  void _onSearchPressed()  {
-     ref.read(searchProvider.notifier).processImage(_croppedImageBytes!);
+  void _onSearchPressed() {
+    ref.read(searchProvider.notifier).processImage(_croppedImageBytes!);
 
     context.push(AppRouter.kSearchResultView);
   }
